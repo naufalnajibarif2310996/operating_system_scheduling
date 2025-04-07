@@ -1,0 +1,525 @@
+/* Materi Page Styles */
+.page-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px 0;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-color);
+  font-weight: 500;
+  margin-right: 15px;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.back-link:hover {
+  background-color: var(--secondary-color);
+}
+
+.page-header h1 {
+  font-size: 1.8rem;
+}
+
+/* Content Layout */
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.sidebar {
+  position: sticky;
+  top: 90px;
+  height: fit-content;
+}
+
+.toc {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toc h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  margin-bottom: 10px;
+}
+
+.toc a {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 4px;
+  color: var(--text-color);
+  transition: all 0.2s ease;
+}
+
+.toc a:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.toc a.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.content section {
+  display: none;
+  background-color: white;
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.content section.active {
+  display: block;
+}
+
+.content h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.content h3 {
+  font-size: 1.4rem;
+  margin: 25px 0 15px;
+  color: var(--text-color);
+}
+
+.content h4 {
+  font-size: 1.2rem;
+  margin: 20px 0 10px;
+  color: var(--text-color);
+}
+
+.section-content {
+  line-height: 1.7;
+}
+
+.section-content p {
+  margin-bottom: 15px;
+}
+
+.section-content ul,
+.section-content ol {
+  margin-bottom: 15px;
+  padding-left: 25px;
+}
+
+.section-content li {
+  margin-bottom: 8px;
+}
+
+/* Tabs */
+.tabs {
+  margin-bottom: 40px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.tab-header {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--secondary-color);
+}
+
+.tab-btn {
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--text-color);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  color: var(--primary-color);
+}
+
+.tab-btn.active {
+  color: var(--primary-color);
+  background-color: white;
+}
+
+.tab-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+.tab-content {
+  padding: 25px;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+.tab-pane h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.tab-pane h3 {
+  font-size: 1.3rem;
+  margin: 25px 0 15px;
+}
+
+.tab-pane p {
+  margin-bottom: 15px;
+  line-height: 1.7;
+}
+
+.tab-pane ul,
+.tab-pane ol {
+  margin-bottom: 15px;
+  padding-left: 25px;
+}
+
+.tab-pane ul li,
+.tab-pane ol li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.tab-pane ul {
+  list-style-type: disc;
+}
+
+.tab-pane ol {
+  list-style-type: decimal;
+}
+
+.code-block {
+  background-color: var(--secondary-color);
+  padding: 12px 15px;
+  border-radius: 6px;
+  font-family: monospace;
+  margin-bottom: 15px;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.navigation-buttons .btn:only-child {
+  margin-left: auto;
+}
+
+/* Table Styles */
+.table-responsive {
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid var(--border-color);
+}
+
+table th {
+  background-color: var(--secondary-color);
+  font-weight: 600;
+}
+
+table td ul {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+/* Related Content */
+.related-content {
+  margin-top: 40px;
+}
+
+.related-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.related-links {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.related-links li {
+  margin-bottom: 8px;
+}
+
+.related-links a {
+  color: var(--primary-color);
+}
+
+.related-links a:hover {
+  text-decoration: underline;
+}
+
+.game-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+}
+
+/* Info Box */
+.info-box {
+  background-color: #f0f7ff;
+  border-left: 4px solid var(--primary-color);
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 0 4px 4px 0;
+  display: flex;
+  gap: 15px;
+}
+
+.info-icon {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.info-content p {
+  margin-bottom: 0;
+}
+
+/* Image Container */
+.image-container {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.image-container img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.caption {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+/* Criteria Grid */
+.criteria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.criteria-item {
+  background-color: var(--secondary-color);
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.criteria-item h3 {
+  font-size: 1.2rem;
+  margin: 0 0 10px 0;
+  color: var(--primary-color);
+}
+
+.formula {
+  font-family: monospace;
+  background-color: #f8f9fa;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+/* Comparison Table */
+.comparison-table {
+  margin: 20px 0;
+  overflow-x: auto;
+}
+
+.comparison-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid var(--border-color);
+}
+
+.comparison-table th {
+  background-color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.comparison-table td ul {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+/* Algorithm Cards */
+.algorithm-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.algorithm-card h3 {
+  background-color: var(--primary-color);
+  color: white;
+  margin: 0;
+  padding: 15px 20px;
+  font-size: 1.3rem;
+}
+
+.algorithm-content {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.algorithm-description h4,
+.algorithm-example h4 {
+  font-size: 1.1rem;
+  margin: 15px 0 10px;
+  color: var(--text-color);
+}
+
+.example-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.example-table th,
+.example-table td {
+  padding: 8px 10px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+}
+
+.example-table th {
+  background-color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.gantt-chart {
+  display: flex;
+  margin: 15px 0;
+  overflow-x: auto;
+}
+
+.gantt-block {
+  padding: 8px 10px;
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  margin-right: 1px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .content-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    margin-bottom: 20px;
+  }
+
+  .algorithm-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .tab-header {
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    flex: 1 0 50%;
+    text-align: center;
+  }
+
+  .related-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .navigation-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .navigation-buttons .btn {
+    width: 100%;
+  }
+
+  .criteria-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .tab-btn {
+    flex: 1 0 100%;
+  }
+}
+

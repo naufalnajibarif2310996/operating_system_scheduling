@@ -1,0 +1,246 @@
+/* Tentang Page Styles */
+.page-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px 0;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-color);
+  font-weight: 500;
+  margin-right: 15px;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.back-link:hover {
+  background-color: var(--secondary-color);
+}
+
+.page-header h1 {
+  font-size: 1.8rem;
+}
+
+/* About Content */
+.about-content {
+  margin-bottom: 40px;
+}
+
+.about-section {
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.about-section:last-child {
+  border-bottom: none;
+}
+
+.about-section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.about-section p {
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+/* Features Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.feature-item {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: var(--secondary-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.feature-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.feature-content p {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-bottom: 0;
+}
+
+/* Algorithms List */
+.algorithms-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.algorithm-item {
+  padding: 15px;
+  border-radius: 8px;
+  background-color: var(--secondary-color);
+  transition: transform 0.3s ease;
+}
+
+.algorithm-item:hover {
+  transform: translateY(-5px);
+}
+
+.algorithm-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: var(--primary-color);
+}
+
+.algorithm-item p {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-bottom: 0;
+}
+
+/* Team Members */
+.team-members {
+  margin-top: 20px;
+}
+
+.team-member {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: var(--secondary-color);
+}
+
+.member-avatar {
+  width: 80px;
+  height: 80px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  flex-shrink: 0;
+}
+
+.member-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.member-info p {
+  color: var(--text-light);
+  margin-bottom: 5px;
+}
+
+/* Technologies */
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.technology-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100px;
+}
+
+.technology-icon {
+  width: 60px;
+  height: 60px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.technology-item:hover .technology-icon {
+  transform: scale(1.1);
+}
+
+.technology-name {
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Contact Info */
+.contact-info {
+  margin-top: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.contact-item i {
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .features-grid,
+  .algorithms-list {
+    grid-template-columns: 1fr;
+  }
+
+  .team-member {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .technologies {
+    justify-content: center;
+  }
+}
+
