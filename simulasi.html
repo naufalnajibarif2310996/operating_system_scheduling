@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Penjadwalan Proses - OS Scheduler</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/simulasi.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-desktop"></i>
+                <h1>OS Scheduler</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="materi.html">Materi</a></li>
+                    <li><a href="algoritma.html">Algoritma</a></li>
+                    <li><a href="simulasi.html" class="active">Simulasi</a></li>
+                    <li><a href="game.html">Game</a></li>
+                    <li><a href="tentang.html">Tentang</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </a>
+                <h1>Simulasi Penjadwalan Proses</h1>
+            </div>
+
+            <div class="simulation-container">
+                <div class="simulation-controls">
+                    <div class="algorithm-selector">
+                        <h3>Pilih Algoritma</h3>
+                        <div class="algorithm-options">
+                            <label class="algorithm-option">
+                                <input type="radio" name="algorithm" value="fcfs" checked>
+                                <span class="option-text">First-Come, First-Served (FCFS)</span>
+                            </label>
+                            <label class="algorithm-option">
+                                <input type="radio" name="algorithm" value="sjf">
+                                <span class="option-text">Shortest Job First (SJF)</span>
+                            </label>
+                            <label class="algorithm-option">
+                                <input type="radio" name="algorithm" value="srtf">
+                                <span class="option-text">Shortest Remaining Time First (SRTF)</span>
+                            </label>
+                            <label class="algorithm-option">
+                                <input type="radio" name="algorithm" value="rr">
+                                <span class="option-text">Round Robin (RR)</span>
+                            </label>
+                            <label class="algorithm-option">
+                                <input type="radio" name="algorithm" value="priority">
+                                <span class="option-text">Priority Scheduling</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="rr-time-quantum" style="display: none;">
+                        <h3>Time Quantum</h3>
+                        <div class="time-quantum-control">
+                            <input type="range" id="time-quantum" min="1" max="10" value="2" class="slider">
+                            <span id="time-quantum-value">2</span>
+                        </div>
+                    </div>
+
+                    <div class="process-controls">
+                        <h3>Proses</h3>
+                        <div class="process-actions">
+                            <button id="add-process" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Tambah Proses
+                            </button>
+                            <button id="reset-processes" class="btn btn-outline">
+                                <i class="fas fa-undo"></i> Reset
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="simulation-actions">
+                        <button id="run-simulation" class="btn btn-primary">
+                            <i class="fas fa-play"></i> Jalankan Simulasi
+                        </button>
+                        <button id="step-simulation" class="btn btn-outline">
+                            <i class="fas fa-step-forward"></i> Step-by-Step
+                        </button>
+                        <button id="pause-simulation" class="btn btn-outline" disabled>
+                            <i class="fas fa-pause"></i> Pause
+                        </button>
+                    </div>
+
+                    <div class="simulation-speed">
+                        <h3>Kecepatan Simulasi</h3>
+                        <div class="speed-control">
+                            <input type="range" id="simulation-speed" min="1" max="5" value="3" class="slider">
+                            <div class="speed-labels">
+                                <span>Lambat</span>
+                                <span>Cepat</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="simulation-content">
+                    <div class="process-table-container">
+                        <h3>Daftar Proses</h3>
+                        <div class="table-responsive">
+                            <table id="process-table">
+                                <thead>
+                                    <tr>
+                                        <th>Proses</th>
+                                        <th>Arrival Time</th>
+                                        <th>Burst Time</th>
+                                        <th class="priority-column" style="display: none;">Priority</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>P1</td>
+                                        <td><input type="number" min="0" value="0" class="arrival-time"></td>
+                                        <td><input type="number" min="1" value="6" class="burst-time"></td>
+                                        <td class="priority-column" style="display: none;"><input type="number" min="1" value="2" class="priority"></td>
+                                        <td><button class="delete-process"><i class="fas fa-trash"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>P2</td>
+                                        <td><input type="number" min="0" value="2" class="arrival-time"></td>
+                                        <td><input type="number" min="1" value="4" class="burst-time"></td>
+                                        <td class="priority-column" style="display: none;"><input type="number" min="1" value="1" class="priority"></td>
+                                        <td><button class="delete-process"><i class="fas fa-trash"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>P3</td>
+                                        <td><input type="number" min="0" value="4" class="arrival-time"></td>
+                                        <td><input type="number" min="1" value="8" class="burst-time"></td>
+                                        <td class="priority-column" style="display: none;"><input type="number" min="1" value="3" class="priority"></td>
+                                        <td><button class="delete-process"><i class="fas fa-trash"></i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="simulation-visualization">
+                        <h3>Visualisasi</h3>
+                        <div class="visualization-container">
+                            <div class="timeline-container">
+                                <div id="timeline" class="timeline"></div>
+                                <div id="time-markers" class="time-markers"></div>
+                            </div>
+                            <div id="gantt-chart" class="gantt-chart"></div>
+                            <div id="process-states" class="process-states"></div>
+                        </div>
+                    </div>
+
+                    <div class="simulation-results">
+                        <h3>Hasil Simulasi</h3>
+                        <div class="results-container">
+                            <div class="result-metrics">
+                                <div class="metric">
+                                    <span class="metric-label">Average Waiting Time:</span>
+                                    <span id="avg-waiting-time" class="metric-value">0.00</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">Average Turnaround Time:</span>
+                                    <span id="avg-turnaround-time" class="metric-value">0.00</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">CPU Utilization:</span>
+                                    <span id="cpu-utilization" class="metric-value">0%</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">Throughput:</span>
+                                    <span id="throughput" class="metric-value">0.00 proses/unit waktu</span>
+                                </div>
+                            </div>
+                            <div class="result-table-container">
+                                <table id="result-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Proses</th>
+                                            <th>Arrival Time</th>
+                                            <th>Burst Time</th>
+                                            <th>Completion Time</th>
+                                            <th>Turnaround Time</th>
+                                            <th>Waiting Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Results will be added here dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="simulation-explanation">
+                <h2>Penjelasan Algoritma</h2>
+                <div id="algorithm-explanation" class="explanation-content">
+                    <h3>First-Come, First-Served (FCFS)</h3>
+                    <p>
+                        First-Come, First-Served (FCFS) adalah algoritma penjadwalan CPU paling sederhana. Dalam algoritma ini, proses yang pertama kali meminta CPU akan dilayani terlebih dahulu. Implementasinya menggunakan struktur data antrian FIFO (First-In, First-Out).
+                    </p>
+                    <h4>Karakteristik FCFS:</h4>
+                    <ul>
+                        <li>Non-preemptive: Setelah CPU dialokasikan ke suatu proses, proses tersebut akan terus menggunakan CPU hingga selesai</li>
+                        <li>Sederhana dan mudah diimplementasikan</li>
+                        <li>Dapat menyebabkan convoy effect (proses pendek menunggu proses panjang)</li>
+                        <li>Waktu tunggu rata-rata tinggi</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> OS Scheduler. Media Pembelajaran Sistem Operasi.</p>
+            <p>Dibuat dengan ❤️ oleh Mahasiswa Pendidikan Ilmu Komputer</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/simulasi.js"></script>
+</body>
+</html>
