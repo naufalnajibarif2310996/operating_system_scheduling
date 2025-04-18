@@ -43,11 +43,9 @@
             <div class="algorithm-tabs">
                 <div class="tab-buttons">
                     <button class="tab-button active" data-tab="fcfs">FCFS</button>
-                    <button class="tab-button" data-tab="sjf">SJF</button>
-                    <button class="tab-button" data-tab="srtf">SRTF</button>
+                    <button class="tab-button" data-tab="sjf">SJF Non-preemptive</button>
+                    <button class="tab-button" data-tab="srtf">SJF Preemptive (SRTF)</button>
                     <button class="tab-button" data-tab="rr">Round Robin</button>
-                    <button class="tab-button" data-tab="priority">Priority</button>
-                    <button class="tab-button" data-tab="multilevel">Multilevel Queue</button>
                 </div>
 
                 <div class="tab-content">
@@ -203,7 +201,7 @@ function FCFS_scheduling(processes):
                     <!-- SJF Tab -->
                     <div class="tab-pane" id="sjf-tab">
                         <div class="algorithm-header">
-                            <h2>Shortest Job First (SJF)</h2>
+                            <h2>Shortest Job First (SJF) Non-preemptive</h2>
                             <div class="algorithm-tags">
                                 <span class="tag">Non-preemptive</span>
                                 <span class="tag">Optimal</span>
@@ -214,7 +212,7 @@ function FCFS_scheduling(processes):
                         <div class="algorithm-description">
                             <h3>Deskripsi</h3>
                             <p>
-                                Shortest Job First (SJF) adalah algoritma penjadwalan yang mengeksekusi proses dengan waktu burst terpendek terlebih dahulu. Algoritma ini optimal untuk meminimalkan waktu tunggu rata-rata.
+                                Shortest Job First (SJF) Non-preemptive adalah algoritma penjadwalan yang mengeksekusi proses dengan waktu burst terpendek terlebih dahulu. Algoritma ini optimal untuk meminimalkan waktu tunggu rata-rata.
                             </p>
                             
                             <div class="info-box">
@@ -223,7 +221,7 @@ function FCFS_scheduling(processes):
                                 </div>
                                 <div class="info-content">
                                     <p>
-                                        SJF adalah algoritma non-preemptive, artinya setelah CPU dialokasikan ke suatu proses, proses tersebut akan terus menggunakan CPU hingga selesai. Versi preemptive dari SJF disebut Shortest Remaining Time First (SRTF).
+                                        SJF Non-preemptive adalah algoritma non-preemptive, artinya setelah CPU dialokasikan ke suatu proses, proses tersebut akan terus menggunakan CPU hingga selesai. Versi preemptive dari SJF disebut Shortest Remaining Time First (SRTF).
                                     </p>
                                 </div>
                             </div>
@@ -366,7 +364,7 @@ function SJF_scheduling(processes):
                     <!-- SRTF Tab -->
                     <div class="tab-pane" id="srtf-tab">
                         <div class="algorithm-header">
-                            <h2>Shortest Remaining Time First (SRTF)</h2>
+                            <h2>Shortest Remaining Time First (SJF Preemptive)</h2>
                             <div class="algorithm-tags">
                                 <span class="tag">Preemptive</span>
                                 <span class="tag">Optimal</span>
@@ -688,322 +686,6 @@ function RR_scheduling(processes, time_quantum):
                             </pre>
                         </div>
                     </div>
-
-                    <!-- Priority Tab -->
-                    <div class="tab-pane" id="priority-tab">
-                        <div class="algorithm-header">
-                            <h2>Priority Scheduling</h2>
-                            <div class="algorithm-tags">
-                                <span class="tag">Preemptive/Non-preemptive</span>
-                                <span class="tag">Priority-based</span>
-                            </div>
-                        </div>
-                        
-                        <div class="algorithm-description">
-                            <h3>Deskripsi</h3>
-                            <p>
-                                Priority Scheduling adalah algoritma penjadwalan di mana setiap proses diberi prioritas, dan CPU dialokasikan ke proses dengan prioritas tertinggi. Prioritas dapat ditentukan berdasarkan kebutuhan memori, waktu, atau faktor lainnya.
-                            </p>
-                            
-                            <div class="info-box">
-                                <div class="info-icon">
-                                    <i class="fas fa-info-circle"></i>
-                                </div>
-                                <div class="info-content">
-                                    <p>
-                                        Priority Scheduling dapat bersifat preemptive atau non-preemptive. Dalam versi preemptive, proses yang sedang berjalan dapat dipreemsi jika proses dengan prioritas lebih tinggi tiba.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="algorithm-properties">
-                            <h3>Karakteristik</h3>
-                            <div class="property-grid">
-                                <div class="property-item">
-                                    <h4>Kelebihan</h4>
-                                    <ul>
-                                        <li>Mendukung prioritas proses yang berbeda</li>
-                                        <li>Fleksibel dan dapat disesuaikan dengan kebutuhan sistem</li>
-                                        <li>Cocok untuk sistem real-time dan sistem dengan proses kritis</li>
-                                    </ul>
-                                </div>
-                                <div class="property-item">
-                                    <h4>Kekurangan</h4>
-                                    <ul>
-                                        <li>Dapat menyebabkan starvation untuk proses dengan prioritas rendah</li>
-                                        <li>Membutuhkan mekanisme aging untuk mencegah starvation</li>
-                                        <li>Overhead dalam mengelola prioritas</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="algorithm-example">
-                            <h3>Contoh (Non-preemptive)</h3>
-                            <p>Misalkan terdapat 4 proses dengan waktu kedatangan, burst time, dan prioritas sebagai berikut (prioritas rendah = angka kecil):</p>
-                            
-                            <div class="example-table-container">
-                                <table class="example-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Proses</th>
-                                            <th>Arrival Time</th>
-                                            <th>Burst Time</th>
-                                            <th>Priority</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>P1</td>
-                                            <td>0</td>
-                                            <td>7</td>
-                                            <td>2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>P2</td>
-                                            <td>2</td>
-                                            <td>4</td>
-                                            <td>1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>P3</td>
-                                            <td>4</td>
-                                            <td>1</td>
-                                            <td>3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>P4</td>
-                                            <td>5</td>
-                                            <td>4</td>
-                                            <td>2</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                            <h4>Gantt Chart</h4>
-                            <div class="gantt-chart">
-                                <div class="gantt-block" style="width: 20px;">P1 (0-2)</div>
-                                <div class="gantt-block" style="width: 40px;">P2 (2-6)</div>
-                                <div class="gantt-block" style="width: 50px;">P1 (6-11)</div>
-                                <div class="gantt-block" style="width: 40px;">P4 (11-15)</div>
-                                <div class="gantt-block" style="width: 10px;">P3 (15-16)</div>
-                            </div>
-                            
-                            <h4>Perhitungan</h4>
-                            <div class="calculation">
-                                <p><strong>Waiting Time (WT):</strong></p>
-                                <ul>
-                                    <li>WT<sub>P1</sub> = 0 + (6 - 2) = 4</li>
-                                    <li>WT<sub>P2</sub> = 2 - 2 = 0</li>
-                                    <li>WT<sub>P3</sub> = 15 - 4 = 11</li>
-                                    <li>WT<sub>P4</sub> = 11 - 5 = 6</li>
-                                </ul>
-                                
-                                <p><strong>Turnaround Time (TAT):</strong></p>
-                                <ul>
-                                    <li>TAT<sub>P1</sub> = 11 - 0 = 11</li>
-                                    <li>TAT<sub>P2</sub> = 6 - 2 = 4</li>
-                                    <li>TAT<sub>P3</sub> = 16 - 4 = 12</li>
-                                    <li>TAT<sub>P4</sub> = 15 - 5 = 10</li>
-                                </ul>
-                                
-                                <p><strong>Average Waiting Time:</strong> (4 + 0 + 11 + 6) / 4 = 5.25</p>
-                                <p><strong>Average Turnaround Time:</strong> (11 + 4 + 12 + 10) / 4 = 9.25</p>
-                            </div>
-                        </div>
-                        
-                        <div class="algorithm-pseudocode">
-                            <h3>Pseudocode (Non-preemptive)</h3>
-                            <pre>
-function Priority_scheduling(processes):
-    sort processes by arrival_time
-    current_time = 0
-    completed = 0
-    total_processes = processes.length
-    
-    while completed < total_processes:
-        // Find process with highest priority among arrived processes
-        highest_priority_process = null
-        highest_priority = LOWEST_PRIORITY
-        
-        for each process in processes:
-            if process.arrival_time <= current_time and process.remaining_time > 0:
-                if process.priority > highest_priority:
-                    highest_priority = process.priority
-                    highest_priority_process = process
-        
-        if highest_priority_process == null:
-            // No process available, jump to next arrival
-            current_time = find_next_arrival_time(processes, current_time)
-            continue
-        
-        // Execute the highest priority process
-        highest_priority_process.start_time = current_time
-        highest_priority_process.waiting_time = current_time - highest_priority_process.arrival_time
-        
-        current_time += highest_priority_process.burst_time
-        
-        highest_priority_process.remaining_time = 0
-        
-        highest_priority_process.completion_time = current_time
-        highest_priority_process.turnaround_time = highest_priority_process.completion_time - highest_priority_process.arrival_time
-        
-        completed++
-    
-    calculate average waiting time and turnaround time
-    return schedule
-                            </pre>
-                        </div>
-                    </div>
-
-                    <!-- Multilevel Queue Tab -->
-                    <div class="tab-pane" id="multilevel-tab">
-                        <div class="algorithm-header">
-                            <h2>Multilevel Queue Scheduling</h2>
-                            <div class="algorithm-tags">
-                                <span class="tag">Multiple Queues</span>
-                                <span class="tag">Fixed Priority</span>
-                                <span class="tag">Complex</span>
-                            </div>
-                        </div>
-                        
-                        <div class="algorithm-description">
-                            <h3>Deskripsi</h3>
-                            <p>
-                                Multilevel Queue Scheduling membagi antrian ready menjadi beberapa antrian terpisah berdasarkan properti proses (seperti tipe, prioritas, atau ukuran). Setiap antrian memiliki algoritma penjadwalan sendiri dan prioritas relatif terhadap antrian lain.
-                            </p>
-                            
-                            <div class="info-box">
-                                <div class="info-icon">
-                                    <i class="fas fa-info-circle"></i>
-                                </div>
-                                <div class="info-content">
-                                    <p>
-                                        Dalam Multilevel Queue, proses ditetapkan ke satu antrian secara permanen dan tidak dapat berpindah antar antrian. Penjadwalan terjadi dalam dua tingkat: antar antrian (biasanya fixed priority) dan dalam antrian (dapat menggunakan algoritma berbeda).
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="algorithm-properties">
-                            <h3>Karakteristik</h3>
-                            <div class="property-grid">
-                                <div class="property-item">
-                                    <h4>Kelebihan</h4>
-                                    <ul>
-                                        <li>Mendukung berbagai kategori proses dengan kebutuhan berbeda</li>
-                                        <li>Fleksibel dalam pemilihan algoritma untuk setiap antrian</li>
-                                        <li>Dapat mengoptimalkan kinerja sistem untuk berbagai jenis proses</li>
-                                    </ul>
-                                </div>
-                                <div class="property-item">
-                                    <h4>Kekurangan</h4>
-                                    <ul>
-                                        <li>Kompleksitas implementasi yang tinggi</li>
-                                        <li>Dapat menyebabkan starvation untuk antrian prioritas rendah</li>
-                                        <li>Overhead dalam mengelola multiple queues</li>
-                                        <li>Proses tidak dapat berpindah antar antrian</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="algorithm-example">
-                            <h3>Contoh</h3>
-                            <p>Misalkan sistem memiliki dua antrian:</p>
-                            <ul>
-                                <li><strong>Antrian Foreground (Prioritas Tinggi)</strong>: Untuk proses interaktif, menggunakan Round Robin dengan quantum = 4</li>
-                                <li><strong>Antrian Background (Prioritas Rendah)</strong>: Untuk proses batch, menggunakan FCFS</li>
-                            </ul>
-                            
-                            <p>Dengan proses-proses berikut:</p>
-                            
-                            <div class="example-table-container">
-                                <table class="example-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Proses</th>
-                                            <th>Arrival Time</th>
-                                            <th>Burst Time</th>
-                                            <th>Antrian</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>P1</td>
-                                            <td>0</td>
-                                            <td>5</td>
-                                            <td>Foreground</td>
-                                        </tr>
-                                        <tr>
-                                            <td>P2</td>
-                                            <td>1</td>
-                                            <td>3</td>
-                                            <td>Foreground</td>
-                                        </tr>
-                                        <tr>
-                                            <td>P3</td>
-                                            <td>2</td>
-                                            <td>8</td>
-                                            <td>Background</td>
-                                        </tr>
-                                        <tr>
-                                            <td>P4</td>
-                                            <td>3</td>
-                                            <td>6</td>
-                                            <td>Background</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                            <h4>Gantt Chart</h4>
-                            <div class="gantt-chart">
-                                <div class="gantt-block" style="width: 40px;">P1 (0-4)</div>
-                                <div class="gantt-block" style="width: 30px;">P2 (4-7)</div>
-                                <div class="gantt-block" style="width: 10px;">P1 (7-8)</div>
-                                <div class="gantt-block" style="width: 80px;">P3 (8-16)</div>
-                                <div class="gantt-block" style="width: 60px;">P4 (16-22)</div>
-                            </div>
-                            
-                            <p>Perhatikan bahwa proses foreground (P1 dan P2) dieksekusi terlebih dahulu menggunakan Round Robin. Setelah semua proses foreground selesai, proses background (P3 dan P4) dieksekusi menggunakan FCFS.</p>
-                        </div>
-                        
-                        <div class="algorithm-pseudocode">
-                            <h3>Pseudocode</h3>
-                            <pre>
-function Multilevel_Queue_scheduling(processes, queues):
-    // Assign processes to their respective queues
-    for each process in processes:
-        assign process to appropriate queue based on process type
-    
-    current_time = 0
-    completed = 0
-    total_processes = processes.length
-    
-    while completed < total_processes:
-        // Start from highest priority queue
-        for each queue in queues (from highest to lowest priority):
-            if queue is not empty:
-                // Use the scheduling algorithm for this queue
-                if queue.algorithm == "RR":
-                    execute_RR(queue, time_quantum)
-                else if queue.algorithm == "FCFS":
-                    execute_FCFS(queue)
-                else if queue.algorithm == "SJF":
-                    execute_SJF(queue)
-                
-                // Update completed processes
-                update_completed_processes()
-                break  // Process from higher priority queue found, don't check lower queues
-    
-    calculate average waiting time and turnaround time
-    return schedule
-                            </pre>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1012,7 +694,7 @@ function Multilevel_Queue_scheduling(processes, queues):
     <footer>
         <div class="container">
             <p>&copy; <span id="current-year"></span> OS Scheduler. Media Pembelajaran Sistem Operasi.</p>
-            <p>Dibuat oleh Kelompok 6 Pendidikan Ilmu Komputer A</p>
+            <p>Dibuat dengan ❤️ oleh Mahasiswa Pendidikan Ilmu Komputer</p>
         </div>
     </footer>
 
@@ -1020,4 +702,3 @@ function Multilevel_Queue_scheduling(processes, queues):
     <script src="js/algoritma.js"></script>
 </body>
 </html>
-
