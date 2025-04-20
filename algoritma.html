@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algoritma Penjadwalan - OS Scheduler</title>
+    <link rel="icon" href="assets/microchip.svg" type="image/svg+xml">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/algoritma.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,10 +19,10 @@
             <nav>
                 <ul>
                     <li><a href="index.html">Beranda</a></li>
-                    <li><a href="materi.html">Materi</a></li>
+                    <!-- <li><a href="materi.html">Materi</a></li> -->
                     <li><a href="algoritma.html" class="active">Algoritma</a></li>
                     <li><a href="simulasi.html">Simulasi</a></li>
-                    <li><a href="game.html">Game</a></li>
+                    <!-- <li><a href="game.html">Game</a></li> -->
                     <li><a href="tentang.html">Tentang</a></li>
                 </ul>
             </nav>
@@ -118,7 +119,7 @@
                                         <tr>
                                             <td>P1</td>
                                             <td>0</td>
-                                            <td>24</td>
+                                            <td>5</td>
                                         </tr>
                                         <tr>
                                             <td>P2</td>
@@ -134,12 +135,12 @@
                                 </table>
                             </div>
                             
-                            <h4>Gantt Chart</h4>
+                            <!-- <h4>Gantt Chart</h4>
                             <div class="gantt-chart">
                                 <div class="gantt-block" style="width: 240px;">P1 (0-24)</div>
                                 <div class="gantt-block" style="width: 30px;">P2 (24-27)</div>
                                 <div class="gantt-block" style="width: 30px;">P3 (27-30)</div>
-                            </div>
+                            </div> -->
                             
                             <h4>Perhitungan</h4>
                             <div class="calculation">
@@ -173,29 +174,29 @@
                             </div>
                         </div>
                         
-                        <div class="algorithm-pseudocode">
+                        <!-- <div class="algorithm-pseudocode">
                             <h3>Pseudocode</h3>
                             <pre>
-function FCFS_scheduling(processes):
-    sort processes by arrival_time
-    current_time = 0
-    
-    for each process in processes:
-        if current_time < process.arrival_time:
-            current_time = process.arrival_time
-        
-        process.start_time = current_time
-        process.waiting_time = current_time - process.arrival_time
-        
-        current_time += process.burst_time
-        
-        process.completion_time = current_time
-        process.turnaround_time = process.completion_time - process.arrival_time
-    
-    calculate average waiting time and turnaround time
-    return schedule
+                                function FCFS_scheduling(processes):
+                                    sort processes by arrival_time
+                                    current_time = 0
+                                    
+                                    for each process in processes:
+                                        if current_time < process.arrival_time:
+                                            current_time = process.arrival_time
+                                        
+                                        process.start_time = current_time
+                                        process.waiting_time = current_time - process.arrival_time
+                                        
+                                        current_time += process.burst_time
+                                        
+                                        process.completion_time = current_time
+                                        process.turnaround_time = process.completion_time - process.arrival_time
+                                    
+                                    calculate average waiting time and turnaround time
+                                    return schedule
                             </pre>
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- SJF Tab -->
@@ -212,7 +213,7 @@ function FCFS_scheduling(processes):
                         <div class="algorithm-description">
                             <h3>Deskripsi</h3>
                             <p>
-                                Shortest Job First (SJF) Non-preemptive adalah algoritma penjadwalan yang mengeksekusi proses dengan waktu burst terpendek terlebih dahulu. Algoritma ini optimal untuk meminimalkan waktu tunggu rata-rata.
+                                SJF Non-preemptive adalah algoritma penjadwalan yang mengeksekusi proses dengan burst time terkecil dari proses-proses yang telah datang berdasarkan arrival time, dan menjalankannya hingga selesai tanpa interupsi.
                             </p>
                             
                             <div class="info-box">
@@ -287,13 +288,13 @@ function FCFS_scheduling(processes):
                                 </table>
                             </div>
                             
-                            <h4>Gantt Chart</h4>
+                            <!-- <h4>Gantt Chart</h4>
                             <div class="gantt-chart">
                                 <div class="gantt-block" style="width: 60px;">P1 (0-6)</div>
                                 <div class="gantt-block" style="width: 30px;">P2 (6-9)</div>
                                 <div class="gantt-block" style="width: 40px;">P4 (9-13)</div>
                                 <div class="gantt-block" style="width: 80px;">P3 (13-21)</div>
-                            </div>
+                            </div> -->
                             
                             <h4>Perhitungan</h4>
                             <div class="calculation">
@@ -318,47 +319,47 @@ function FCFS_scheduling(processes):
                             </div>
                         </div>
                         
-                        <div class="algorithm-pseudocode">
+                        <!-- <div class="algorithm-pseudocode">
                             <h3>Pseudocode</h3>
                             <pre>
-function SJF_scheduling(processes):
-    sort processes by arrival_time
-    current_time = 0
-    completed = 0
-    total_processes = processes.length
-    
-    while completed < total_processes:
-        // Find process with shortest burst time among arrived processes
-        shortest_job = null
-        min_burst = INFINITY
-        
-        for each process in processes:
-            if process.arrival_time <= current_time and process.remaining_time > 0:
-                if process.burst_time < min_burst:
-                    min_burst = process.burst_time
-                    shortest_job = process
-        
-        if shortest_job == null:
-            // No process available, jump to next arrival
-            current_time = find_next_arrival_time(processes, current_time)
-            continue
-        
-        // Execute the shortest job
-        shortest_job.start_time = current_time
-        shortest_job.waiting_time = current_time - shortest_job.arrival_time
-        
-        current_time += shortest_job.burst_time
-        shortest_job.remaining_time = 0
-        
-        shortest_job.completion_time = current_time
-        shortest_job.turnaround_time = shortest_job.completion_time - shortest_job.arrival_time
-        
-        completed++
-    
-    calculate average waiting time and turnaround time
-    return schedule
+                            function SJF_scheduling(processes):
+                                sort processes by arrival_time
+                                current_time = 0
+                                completed = 0
+                                total_processes = processes.length
+                                
+                                while completed < total_processes:
+                                    // Find process with shortest burst time among arrived processes
+                                    shortest_job = null
+                                    min_burst = INFINITY
+                                    
+                                    for each process in processes:
+                                        if process.arrival_time <= current_time and process.remaining_time > 0:
+                                            if process.burst_time < min_burst:
+                                                min_burst = process.burst_time
+                                                shortest_job = process
+                                    
+                                    if shortest_job == null:
+                                        // No process available, jump to next arrival
+                                        current_time = find_next_arrival_time(processes, current_time)
+                                        continue
+                                    
+                                    // Execute the shortest job
+                                    shortest_job.start_time = current_time
+                                    shortest_job.waiting_time = current_time - shortest_job.arrival_time
+                                    
+                                    current_time += shortest_job.burst_time
+                                    shortest_job.remaining_time = 0
+                                    
+                                    shortest_job.completion_time = current_time
+                                    shortest_job.turnaround_time = shortest_job.completion_time - shortest_job.arrival_time
+                                    
+                                    completed++
+                                
+                                calculate average waiting time and turnaround time
+                                return schedule
                             </pre>
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- SRTF Tab -->
@@ -450,14 +451,14 @@ function SJF_scheduling(processes):
                                 </table>
                             </div>
                             
-                            <h4>Gantt Chart</h4>
+                            <!-- <h4>Gantt Chart</h4>
                             <div class="gantt-chart">
                                 <div class="gantt-block" style="width: 10px;">P1 (0-1)</div>
                                 <div class="gantt-block" style="width: 40px;">P2 (1-5)</div>
                                 <div class="gantt-block" style="width: 50px;">P4 (5-10)</div>
                                 <div class="gantt-block" style="width: 70px;">P1 (10-17)</div>
                                 <div class="gantt-block" style="width: 90px;">P3 (17-26)</div>
-                            </div>
+                            </div> -->
                             
                             <h4>Perhitungan</h4>
                             <div class="calculation">
@@ -482,46 +483,46 @@ function SJF_scheduling(processes):
                             </div>
                         </div>
                         
-                        <div class="algorithm-pseudocode">
+                        <!-- <div class="algorithm-pseudocode">
                             <h3>Pseudocode</h3>
                             <pre>
-function SRTF_scheduling(processes):
-    initialize remaining_time for each process = burst_time
-    current_time = 0
-    completed = 0
-    total_processes = processes.length
-    
-    while completed < total_processes:
-        // Find process with shortest remaining time among arrived processes
-        shortest_job = null
-        min_remaining = INFINITY
-        
-        for each process in processes:
-            if process.arrival_time <= current_time and process.remaining_time > 0:
-                if process.remaining_time < min_remaining:
-                    min_remaining = process.remaining_time
-                    shortest_job = process
-        
-        if shortest_job == null:
-            // No process available, jump to next arrival
-            current_time = find_next_arrival_time(processes, current_time)
-            continue
-        
-        // Execute the process for 1 time unit
-        shortest_job.remaining_time--
-        current_time++
-        
-        // Check if process is completed
-        if shortest_job.remaining_time == 0:
-            completed++
-            shortest_job.completion_time = current_time
-            shortest_job.turnaround_time = shortest_job.completion_time - shortest_job.arrival_time
-            shortest_job.waiting_time = shortest_job.turnaround_time - shortest_job.burst_time
-    
-    calculate average waiting time and turnaround time
-    return schedule
+                                function SRTF_scheduling(processes):
+                                    initialize remaining_time for each process = burst_time
+                                    current_time = 0
+                                    completed = 0
+                                    total_processes = processes.length
+                                    
+                                    while completed < total_processes:
+                                        // Find process with shortest remaining time among arrived processes
+                                        shortest_job = null
+                                        min_remaining = INFINITY
+                                        
+                                        for each process in processes:
+                                            if process.arrival_time <= current_time and process.remaining_time > 0:
+                                                if process.remaining_time < min_remaining:
+                                                    min_remaining = process.remaining_time
+                                                    shortest_job = process
+                                        
+                                        if shortest_job == null:
+                                            // No process available, jump to next arrival
+                                            current_time = find_next_arrival_time(processes, current_time)
+                                            continue
+                                        
+                                        // Execute the process for 1 time unit
+                                        shortest_job.remaining_time--
+                                        current_time++
+                                        
+                                        // Check if process is completed
+                                        if shortest_job.remaining_time == 0:
+                                            completed++
+                                            shortest_job.completion_time = current_time
+                                            shortest_job.turnaround_time = shortest_job.completion_time - shortest_job.arrival_time
+                                            shortest_job.waiting_time = shortest_job.turnaround_time - shortest_job.burst_time
+                                    
+                                    calculate average waiting time and turnaround time
+                                    return schedule
                             </pre>
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- Round Robin Tab -->
@@ -610,7 +611,7 @@ function SRTF_scheduling(processes):
                                 </table>
                             </div>
                             
-                            <h4>Gantt Chart</h4>
+                            <!-- <h4>Gantt Chart</h4>
                             <div class="gantt-chart">
                                 <div class="gantt-block" style="width: 40px;">P1 (0-4)</div>
                                 <div class="gantt-block" style="width: 40px;">P2 (4-8)</div>
@@ -619,7 +620,7 @@ function SRTF_scheduling(processes):
                                 <div class="gantt-block" style="width: 10px;">P2 (16-17)</div>
                                 <div class="gantt-block" style="width: 40px;">P3 (17-21)</div>
                                 <div class="gantt-block" style="width: 20px;">P1 (21-23)</div>
-                            </div>
+                            </div> -->
                             
                             <h4>Perhitungan</h4>
                             <div class="calculation">
@@ -649,43 +650,43 @@ function SRTF_scheduling(processes):
                             </div>
                         </div>
                         
-                        <div class="algorithm-pseudocode">
+                        <!-- <div class="algorithm-pseudocode">
                             <h3>Pseudocode</h3>
                             <pre>
-function RR_scheduling(processes, time_quantum):
-    initialize remaining_time for each process = burst_time
-    initialize ready_queue with arrived processes
-    current_time = 0
-    
-    while ready_queue is not empty:
-        current_process = dequeue from ready_queue
-        
-        if current_process.remaining_time <= time_quantum:
-            // Process will complete in this time quantum
-            current_time += current_process.remaining_time
-            current_process.remaining_time = 0
-            current_process.completion_time = current_time
-            current_process.turnaround_time = current_process.completion_time - current_process.arrival_time
-            current_process.waiting_time = current_process.turnaround_time - current_process.burst_time
-        else:
-            // Process will not complete in this time quantum
-            current_time += time_quantum
-            current_process.remaining_time -= time_quantum
-            
-            // Add newly arrived processes to ready queue
-            add_newly_arrived_processes(ready_queue, processes, current_time)
-            
-            // Add current process back to ready queue
-            enqueue current_process to ready_queue
-        
-        // Add newly arrived processes to ready queue
-        add_newly_arrived_processes(ready_queue, processes, current_time)
-    
-    calculate average waiting time and turnaround time
-    return schedule
+                            function RR_scheduling(processes, time_quantum):
+                                initialize remaining_time for each process = burst_time
+                                initialize ready_queue with arrived processes
+                                current_time = 0
+                                
+                                while ready_queue is not empty:
+                                    current_process = dequeue from ready_queue
+                                    
+                                    if current_process.remaining_time <= time_quantum:
+                                        // Process will complete in this time quantum
+                                        current_time += current_process.remaining_time
+                                        current_process.remaining_time = 0
+                                        current_process.completion_time = current_time
+                                        current_process.turnaround_time = current_process.completion_time - current_process.arrival_time
+                                        current_process.waiting_time = current_process.turnaround_time - current_process.burst_time
+                                    else:
+                                        // Process will not complete in this time quantum
+                                        current_time += time_quantum
+                                        current_process.remaining_time -= time_quantum
+                                        
+                                        // Add newly arrived processes to ready queue
+                                        add_newly_arrived_processes(ready_queue, processes, current_time)
+                                        
+                                        // Add current process back to ready queue
+                                        enqueue current_process to ready_queue
+                                    
+                                    // Add newly arrived processes to ready queue
+                                    add_newly_arrived_processes(ready_queue, processes, current_time)
+                                
+                                calculate average waiting time and turnaround time
+                                return schedule
                             </pre>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -694,7 +695,7 @@ function RR_scheduling(processes, time_quantum):
     <footer>
         <div class="container">
             <p>&copy; <span id="current-year"></span> OS Scheduler. Media Pembelajaran Sistem Operasi.</p>
-            <p>Dibuat dengan ❤️ oleh Mahasiswa Pendidikan Ilmu Komputer</p>
+            <p>Dibuat oleh Kelompok 6 Pendidikan Ilmu Komputer A</p>
         </div>
     </footer>
 

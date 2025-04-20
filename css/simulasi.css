@@ -1,3 +1,30 @@
+/* Tentang Page Styles */
+.page-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px 0;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-color);
+  font-weight: 500;
+  margin-right: 15px;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.back-link:hover {
+  background-color: var(--secondary-color);
+}
+
+.page-header h1 {
+  font-size: 1.8rem;
+}
+
 /* Simulation Container */
 .simulation-container {
   display: grid;

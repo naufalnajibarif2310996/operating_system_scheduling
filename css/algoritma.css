@@ -36,7 +36,6 @@
 
 .tab-buttons {
   display: flex;
-  overflow-x: auto;
   background-color: var(--secondary-color);
   border-bottom: 1px solid var(--border-color);
 }
